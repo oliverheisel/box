@@ -158,24 +158,48 @@
             </div>
             <div class="guide-note">
               <i data-lucide="info" aria-hidden="true"></i>
-              <p>These are robust starting values for a calibrated printer with a 0.4 mm nozzle. Use your printer and filament manufacturer's profile as the temperature and speed baseline.</p>
+              <p>This guide uses Bambu Studio and a 0.4 mm nozzle. Select the exact Bambu Lab printer and filament presets first. The tables then identify every setting that must be changed or checked.</p>
+            </div>
+
+            <div class="profile-baseline">
+              <div>
+                <p class="group-label">Bambu Studio baseline</p>
+                <h3>Start with these three presets</h3>
+              </div>
+              <div class="profile-grid">
+                <div><span>Printer</span><strong>Your exact Bambu Lab printer with 0.4 mm nozzle</strong></div>
+                <div><span>Filament</span><strong>Bambu PETG HF, or the matching preset for your actual PETG</strong></div>
+                <div><span>Process</span><strong>0.16 mm High Quality, or 0.12 mm Fine for maximum detail</strong></div>
+              </div>
+              <p>Do not copy nozzle temperature, bed temperature, flow or speed from this page. Those values remain controlled by the selected Bambu filament and process presets.</p>
+            </div>
+
+            <div class="settings-heading">
+              <div>
+                <p class="group-label">Global process settings</p>
+                <h3>Apply to BOX and LID</h3>
+              </div>
+              <span class="settings-badge settings-badge-change">All differences marked</span>
             </div>
             <div class="guide-table-wrap">
               <table>
-                <thead><tr><th>Setting</th><th>Recommended start</th><th>Why</th></tr></thead>
+                <thead><tr><th>Bambu Studio setting</th><th>Value</th><th>Action</th></tr></thead>
                 <tbody>
-                  <tr><td>Material</td><td><strong>PETG</strong></td><td>Good layer adhesion and toughness for a functional enclosure. PLA is fine for indoor prototypes.</td></tr>
-                  <tr><td>Nozzle</td><td>0.4 mm</td><td>Good balance between detail, fit and print time.</td></tr>
-                  <tr><td>Layer height</td><td><strong>0.12–0.16 mm</strong></td><td>Use 0.16 mm for a faster functional print or 0.12 mm for the finest lid shoulder, countersink and surface finish.</td></tr>
-                  <tr><td>Perimeters / walls</td><td>4</td><td>Functional strength depends more on perimeters than high infill.</td></tr>
-                  <tr><td>Top / bottom</td><td>1.0 mm minimum</td><td>Use at least 7 layers at 0.16 mm or 9 layers at 0.12 mm.</td></tr>
-                  <tr><td>Infill</td><td>15–20% gyroid or grid</td><td>The design is mostly shell geometry; extra infill adds little benefit.</td></tr>
-                  <tr><td>Supports</td><td><strong>Off</strong></td><td>Critical guide and shoulder transitions are sloped for support-free printing in the intended orientations below.</td></tr>
-                  <tr><td>First layer</td><td>0.20 mm</td><td>A stable first layer without excessive elephant foot.</td></tr>
-                  <tr><td>Brim</td><td>Off normally</td><td>Add a 5–8 mm brim only for very tall boxes or materials prone to warping.</td></tr>
+                  <tr><td><span class="setting-path">Strength / Walls</span>Wall loops</td><td><strong>4</strong></td><td><span class="settings-badge settings-badge-change">Change</span> Bambu profiles use 2. Four loops improve the enclosure and screw-boss strength.</td></tr>
+                  <tr><td><span class="setting-path">Strength / Top/bottom shells</span>Bottom shell thickness</td><td><strong>1.0 mm</strong></td><td><span class="settings-badge settings-badge-change">Change</span> This gives the box floor a defined minimum thickness at either layer height.</td></tr>
+                  <tr><td><span class="setting-path">Strength / Top/bottom shells</span>Top shell thickness</td><td>1.0 mm</td><td><span class="settings-badge settings-badge-check">Check</span> Already 1.0 mm in the 0.16 mm profile. Change it from 0.6 mm when using the 0.12 mm profile.</td></tr>
+                  <tr><td><span class="setting-path">Strength / Sparse infill</span>Sparse infill pattern</td><td>Gyroid</td><td><span class="settings-badge settings-badge-check">Check</span> Already Gyroid in the 0.16 mm High Quality profile. Change it when using 0.12 mm Fine.</td></tr>
+                  <tr><td><span class="setting-path">Strength / Sparse infill</span>Sparse infill density</td><td>15%</td><td><span class="settings-badge settings-badge-keep">Keep</span> Increase to 20% only for unusually large or highly loaded enclosures.</td></tr>
+                  <tr><td><span class="setting-path">Support</span>Enable support</td><td><strong>Off</strong></td><td><span class="settings-badge settings-badge-keep">Keep</span> The guide and shoulder transitions are sloped for support-free printing.</td></tr>
+                  <tr><td><span class="setting-path">Quality</span>Initial layer height</td><td>0.20 mm</td><td><span class="settings-badge settings-badge-keep">Keep</span> Leave the Bambu profile value unchanged.</td></tr>
+                  <tr><td><span class="setting-path">Others / Bed adhesion</span>Brim type</td><td>Auto</td><td><span class="settings-badge settings-badge-keep">Keep</span> For a tall box or difficult material, use Outer brim only with 5 to 8 mm brim width.</td></tr>
+                  <tr><td><span class="setting-path">Quality / Precision</span>XY contour and hole compensation</td><td>0.00 mm</td><td><span class="settings-badge settings-badge-keep">Keep</span> Do not compensate before checking a calibrated first print.</td></tr>
+                  <tr><td><span class="setting-path">Object transform</span>Scale</td><td>100%</td><td><span class="settings-badge settings-badge-keep">Keep</span> Never scale BOX and LID differently.</td></tr>
                 </tbody>
               </table>
             </div>
+
+            <p class="settings-complete"><strong>No other process values are changed.</strong> Leave temperatures, cooling, flow ratio, line widths, speeds, acceleration, seam, wall order, ironing and every unlisted setting at the selected Bambu preset.</p>
 
             <div class="separate-print-note">
               <i data-lucide="box" aria-hidden="true"></i>
@@ -215,17 +239,30 @@
             <div class="transparent-lid-layout">
               <div>
                 <p class="transparent-intro">A clear or translucent lid turns the internal structure into part of the design. The finished surface stays closed, while light reveals the selected infill pattern underneath.</p>
-                <dl class="transparent-settings">
-                  <div><dt>Filament</dt><dd>Clear or translucent PETG</dd></div>
-                  <div><dt>Layer height</dt><dd>0.12–0.16 mm</dd></div>
-                  <div><dt>Top / bottom</dt><dd>2 layers each on the LID only</dd></div>
-                  <div><dt>Infill</dt><dd>20–30% grid, triangles or honeycomb</dd></div>
-                  <div><dt>Top pattern</dt><dd>Monotonic lines</dd></div>
-                  <div><dt>Scale / supports</dt><dd>100% / off</dd></div>
-                </dl>
+                <div class="settings-heading transparent-settings-heading">
+                  <div>
+                    <p class="group-label">Object-specific settings</p>
+                    <h3>Select LID in the Objects view</h3>
+                  </div>
+                  <span class="settings-badge settings-badge-change">LID only</span>
+                </div>
+                <div class="guide-table-wrap transparent-table">
+                  <table>
+                    <thead><tr><th>Bambu Studio setting</th><th>LID value</th><th>Action</th></tr></thead>
+                    <tbody>
+                      <tr><td>Filament slot</td><td><strong>Clear or translucent PETG</strong></td><td>Select the slot containing the lid material.</td></tr>
+                      <tr><td><span class="setting-path">Strength / Top/bottom shells</span>Top shell layers</td><td><strong>2</strong></td><td>Override for LID.</td></tr>
+                      <tr><td><span class="setting-path">Strength / Top/bottom shells</span>Top shell thickness</td><td><strong>0 mm</strong></td><td>Override for LID so the layer count controls the skin.</td></tr>
+                      <tr><td><span class="setting-path">Strength / Top/bottom shells</span>Bottom shell layers</td><td><strong>2</strong></td><td>Override for LID.</td></tr>
+                      <tr><td><span class="setting-path">Strength / Top/bottom shells</span>Bottom shell thickness</td><td><strong>0 mm</strong></td><td>Override for LID so the layer count controls the skin.</td></tr>
+                      <tr><td><span class="setting-path">Strength / Sparse infill</span>Sparse infill pattern</td><td><strong>Grid</strong></td><td>Override for a clearly visible geometric pattern.</td></tr>
+                      <tr><td><span class="setting-path">Strength / Sparse infill</span>Sparse infill density</td><td><strong>25%</strong></td><td>Override for a visible pattern with useful support for the skins.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
                 <div class="transparent-note">
                   <i data-lucide="info" aria-hidden="true"></i>
-                  <p>Apply these values as object-specific settings to the separately imported <strong>LID STL</strong>. Keep the standard 1.0 mm top/bottom recommendation for the BOX. Preview the sliced layers before printing. The exact visibility depends on filament tint, moisture, extrusion calibration and the number of solid skins.</p>
+                  <p>Only the values above differ for the transparent LID. It inherits the global 0.12 or 0.16 mm layer height, 4 wall loops, support off, 100% scale and every other Bambu preset value. Two-layer skins are a visual choice and are less robust than the standard 1.0 mm shell. When using Bambu PETG Translucent, dry it at 65 °C for 8 hours before printing. Preview the sliced layers before printing.</p>
                 </div>
               </div>
               <figure class="infill-example">
@@ -291,11 +328,13 @@
               <h2 id="sources-title">Technical sources</h2>
             </div>
             <ul>
-              <li><a href="https://help.prusa3d.com/article/layers-and-perimeters_1748" target="_blank" rel="noreferrer">Prusa: Layers and perimeters <i data-lucide="external-link" aria-hidden="true"></i></a></li>
-              <li><a href="https://help.prusa3d.com/article/petg_2059" target="_blank" rel="noreferrer">Prusa: PETG material guidance <i data-lucide="external-link" aria-hidden="true"></i></a></li>
-              <li><a href="https://help.prusa3d.com/article/per-model-settings_1674" target="_blank" rel="noreferrer">Prusa: Per-object slicer settings <i data-lucide="external-link" aria-hidden="true"></i></a></li>
-              <li><a href="https://help.prusa3d.com/article/infill-patterns_177130" target="_blank" rel="noreferrer">Prusa: Infill and top-fill patterns <i data-lucide="external-link" aria-hidden="true"></i></a></li>
-              <li><a href="https://www.prusa3d.com/product/threaded-inserts/" target="_blank" rel="noreferrer">Prusa / CNC Kitchen: M3 heat-set inserts <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://bambulab.com/en/download/studio" target="_blank" rel="noreferrer">Bambu Lab: Download Bambu Studio <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://wiki.bambulab.com/en/software/bambu-studio/studio-quick-start" target="_blank" rel="noreferrer">Bambu Lab: Bambu Studio quick start <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://wiki.bambulab.com/en/software/bambu-studio/parameter/quality-advance-settings" target="_blank" rel="noreferrer">Bambu Lab: Advanced quality settings <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://wiki.bambulab.com/en/software/bambu-studio/modifier" target="_blank" rel="noreferrer">Bambu Lab: Object and modifier settings <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://github.com/bambulab/BambuStudio/tree/master/resources/profiles/BBL/process" target="_blank" rel="noreferrer">Bambu Lab: Official process profiles <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://cdn1.bambulab.com/filament/filament-guide/250123/filament-guide-en.pdf" target="_blank" rel="noreferrer">Bambu Lab: Filament guide <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://eu.store.bambulab.com/products/petg-translucent/" target="_blank" rel="noreferrer">Bambu Lab: PETG Translucent printing guidance <i data-lucide="external-link" aria-hidden="true"></i></a></li>
               <li><a href="https://www.bossard.com/global-en/eshop/screws-and-bolts-with-internal-drive/hex-socket-flat-countersunk-head-screws-fully-threaded/p/2101/" target="_blank" rel="noreferrer">Bossard: ISO 10642 / DIN 7991 countersunk screws <i data-lucide="external-link" aria-hidden="true"></i></a></li>
             </ul>
           </section>
