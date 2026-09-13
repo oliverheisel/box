@@ -14,6 +14,7 @@ Statische, vollständig clientseitige Webanwendung zum Erzeugen einer parametris
 - OpenCascade-Berechnung in einem Web Worker
 - Interaktive Three.js-Vorschau mit Orbit, Zoom und Pan
 - Responsive Oberfläche sowie Light und Dark Mode
+- Integrierte Druck-, Material- und Hardware-Anleitung
 - Keine Anmeldung, kein Backend und kein Upload von Geometriedaten
 
 3MF ist bewusst nicht implementiert: Es ist ein optionales Format, während STEP und STL die geforderten CAD- und Druck-Workflows vollständig abdecken.

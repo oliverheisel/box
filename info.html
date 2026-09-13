@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Printing guide, recommended slicer settings and hardware for the Parametric Box Generator."
+    />
+    <meta name="theme-color" content="#247BA0" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg?v=3" />
+    <title>Printing Guide · Parametric Box Generator</title>
+  </head>
+  <body>
+    <div class="guide-page">
+      <header class="guide-header">
+        <a class="guide-brand" href="./" aria-label="Open the Box Generator">
+          <img src="./assets/oliver-heisel-wordmark-yellow.png" alt="Heisel Oliver" />
+        </a>
+        <div class="guide-heading">
+          <p class="eyebrow">CAD Tool</p>
+          <p class="guide-title">Printing Guide</p>
+        </div>
+        <div class="guide-header-actions">
+          <label class="guide-theme-row" for="guide-theme-toggle">
+            <span><i data-lucide="sun" aria-hidden="true"></i> Appearance</span>
+            <span class="switch">
+              <input id="guide-theme-toggle" type="checkbox" role="switch" aria-label="Dark color scheme" />
+              <span class="switch-track" aria-hidden="true"></span>
+            </span>
+          </label>
+          <a class="button button-outline" href="./"><i data-lucide="arrow-left" aria-hidden="true"></i><span>Back to generator</span></a>
+        </div>
+      </header>
+
+      <div class="guide-layout">
+        <aside class="guide-navigation" aria-label="Guide contents">
+          <p class="group-label">On this page</p>
+          <nav>
+            <a href="#why">Why use it</a>
+            <a href="#features">What it does</a>
+            <a href="#workflow">Generator to printer</a>
+            <a href="#print-settings">Print settings</a>
+            <a href="#hardware">Insert and screw</a>
+            <a href="#installation">Assembly</a>
+          </nav>
+          <a class="button button-primary guide-open-button" href="./"><i data-lucide="box" aria-hidden="true"></i><span>Open generator</span></a>
+        </aside>
+
+        <main class="guide-content">
+          <section class="guide-hero">
+            <p class="eyebrow">Parametric box generator</p>
+            <h1>From exact dimensions to a finished enclosure</h1>
+            <p class="guide-lead">
+              Create a printable box and matching slide-on lid without installing CAD software.
+              The model is generated locally in your browser as real solid geometry, then exported
+              for printing or further CAD work.
+            </p>
+            <div class="guide-facts" aria-label="Key facts">
+              <span><i data-lucide="shield-check" aria-hidden="true"></i> Fully client-side</span>
+              <span><i data-lucide="badge-check" aria-hidden="true"></i> Two validated solids</span>
+              <span><i data-lucide="download" aria-hidden="true"></i> STEP and STL</span>
+            </div>
+          </section>
+
+          <section class="guide-section" id="why">
+            <div class="guide-section-heading">
+              <span class="guide-section-icon"><i data-lucide="sparkles" aria-hidden="true"></i></span>
+              <div>
+                <p class="eyebrow">Why use it</p>
+                <h2>A useful enclosure without rebuilding a CAD model</h2>
+              </div>
+            </div>
+            <div class="benefit-grid">
+              <article>
+                <h3>Dimension-driven</h3>
+                <p>Enter the space you need inside, or work from required outside dimensions. The generator keeps both views synchronized.</p>
+              </article>
+              <article>
+                <h3>Private by design</h3>
+                <p>Geometry is calculated in the browser. Your dimensions and exported files are not uploaded to a server.</p>
+              </article>
+              <article>
+                <h3>Ready for real workflows</h3>
+                <p>Use STL files directly in a slicer, or use native STEP solids when you want to add openings, mounts or other CAD features.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="guide-section" id="features">
+            <div class="guide-section-heading">
+              <span class="guide-section-icon"><i data-lucide="settings-2" aria-hidden="true"></i></span>
+              <div>
+                <p class="eyebrow">What it does</p>
+                <h2>Functions included in the generator</h2>
+              </div>
+            </div>
+            <ul class="feature-list">
+              <li><i data-lucide="check" aria-hidden="true"></i><span>Switchable inner or outer length, width and height input</span></li>
+              <li><i data-lucide="check" aria-hidden="true"></i><span>Synchronized sliders, direct number fields and calculated dimensions</span></li>
+              <li><i data-lucide="check" aria-hidden="true"></i><span>Interactive 3D preview with an animated slide-on lid</span></li>
+              <li><i data-lucide="check" aria-hidden="true"></i><span>Retaining edge, guided shoulder, end stop and screw lock</span></li>
+              <li><i data-lucide="check" aria-hidden="true"></i><span>Optional 0.20 mm Heisel logo engraving on the inner floor</span></li>
+              <li><i data-lucide="check" aria-hidden="true"></i><span>Geometry validation for separate, closed BOX and LID solids</span></li>
+              <li><i data-lucide="check" aria-hidden="true"></i><span>Individual BOX/LID STL and STEP downloads plus a complete STEP set</span></li>
+            </ul>
+          </section>
+
+          <section class="guide-section" id="workflow">
+            <div class="guide-section-heading">
+              <span class="guide-section-icon"><i data-lucide="route" aria-hidden="true"></i></span>
+              <div>
+                <p class="eyebrow">Workflow</p>
+                <h2>From generator to printer</h2>
+              </div>
+            </div>
+            <ol class="workflow-list">
+              <li>
+                <span>1</span>
+                <div><h3>Choose the dimension mode</h3><p>Use <strong>Inner</strong> for required usable space or <strong>Outer</strong> when the enclosure must fit a fixed footprint.</p></div>
+              </li>
+              <li>
+                <span>2</span>
+                <div><h3>Set length, width and height</h3><p>Type exact millimetre values or use the sliders. Wait until the status reads <strong>Model is ready</strong>.</p></div>
+              </li>
+              <li>
+                <span>3</span>
+                <div><h3>Inspect the model</h3><p>Rotate the preview and open the lid far enough to check the guide, stop and screw hole. Confirm that both solids are valid.</p></div>
+              </li>
+              <li>
+                <span>4</span>
+                <div><h3>Download both STL files</h3><p>Use <strong>BOX STL</strong> and <strong>LID STL</strong> for printing. STEP is intended for CAD editing and archiving, not the normal slicer workflow.</p></div>
+              </li>
+              <li>
+                <span>5</span>
+                <div><h3>Slice at 100% scale</h3><p>Import both files as separate objects, keep millimetres as the unit, apply the starting settings below and inspect every layer before exporting G-code.</p></div>
+              </li>
+              <li>
+                <span>6</span>
+                <div><h3>Print, fit and assemble</h3><p>Print the box and lid, install the M3 insert, slide the lid into its guide and secure it with the countersunk screw.</p></div>
+              </li>
+            </ol>
+          </section>
+
+          <section class="guide-section" id="print-settings">
+            <div class="guide-section-heading">
+              <span class="guide-section-icon"><i data-lucide="printer" aria-hidden="true"></i></span>
+              <div>
+                <p class="eyebrow">Recommended starting profile</p>
+                <h2>FDM print settings</h2>
+              </div>
+            </div>
+            <div class="guide-note">
+              <i data-lucide="info" aria-hidden="true"></i>
+              <p>These are robust starting values for a calibrated printer with a 0.4 mm nozzle. Use your printer and filament manufacturer's profile as the temperature and speed baseline.</p>
+            </div>
+            <div class="guide-table-wrap">
+              <table>
+                <thead><tr><th>Setting</th><th>Recommended start</th><th>Why</th></tr></thead>
+                <tbody>
+                  <tr><td>Material</td><td><strong>PETG</strong></td><td>Good layer adhesion and toughness for a functional enclosure. PLA is fine for indoor prototypes.</td></tr>
+                  <tr><td>Nozzle</td><td>0.4 mm</td><td>Good balance between detail, fit and print time.</td></tr>
+                  <tr><td>Layer height</td><td>0.20 mm</td><td>Reliable default. Use 0.16 mm for a smoother lid shoulder and countersink.</td></tr>
+                  <tr><td>Perimeters / walls</td><td>4</td><td>Functional strength depends more on perimeters than high infill.</td></tr>
+                  <tr><td>Top / bottom</td><td>5 layers minimum</td><td>Provides at least 1.0 mm of solid skin at 0.20 mm layers.</td></tr>
+                  <tr><td>Infill</td><td>15–20% gyroid or grid</td><td>The design is mostly shell geometry; extra infill adds little benefit.</td></tr>
+                  <tr><td>Supports</td><td>Off</td><td>The box and lid are designed to print in the orientations below without support material.</td></tr>
+                  <tr><td>First layer</td><td>0.20 mm</td><td>A stable first layer without excessive elephant foot.</td></tr>
+                  <tr><td>Brim</td><td>Off normally</td><td>Add a 5–8 mm brim only for very tall boxes or materials prone to warping.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="orientation-grid">
+              <article>
+                <span class="orientation-label">BOX</span>
+                <h3>Print on the closed bottom</h3>
+                <p>Keep the open interior facing upward. This gives the largest bed contact and leaves the lid guide accessible.</p>
+              </article>
+              <article>
+                <span class="orientation-label">LID</span>
+                <h3>Print the broad underside down</h3>
+                <p>Keep the countersink facing upward. Do not rotate the lid onto an edge and do not add automatic supports.</p>
+              </article>
+            </div>
+
+            <div class="fit-callout">
+              <h3>Fit comes before speed</h3>
+              <p>The lid has a nominal clearance of 0.15 mm per side. Print at 100% scale and use calibrated flow. If the lid is tight, correct elephant foot or XY compensation in the slicer instead of scaling only one part. A small test print is recommended when changing printer, nozzle or material.</p>
+            </div>
+          </section>
+
+          <section class="guide-section" id="hardware">
+            <div class="guide-section-heading">
+              <span class="guide-section-icon"><i data-lucide="wrench" aria-hidden="true"></i></span>
+              <div>
+                <p class="eyebrow">One set per box</p>
+                <h2>Threaded insert and screw</h2>
+              </div>
+            </div>
+            <div class="hardware-summary">
+              <article>
+                <p class="group-label">Threaded insert</p>
+                <h3>1× M3 × 5.7 mm heat-set insert</h3>
+                <p>Use the standard/long brass type intended for a <strong>Ø4.0 mm printed pilot hole</strong>. A typical compatible insert has an outside diameter around 4.6 mm.</p>
+              </article>
+              <article>
+                <p class="group-label">Screw</p>
+                <h3>1× M3 × 8 mm countersunk screw</h3>
+                <p>Use a fully threaded <strong>90° countersunk head</strong> to ISO 10642 / DIN 7991. Hex socket or Torx drive both work.</p>
+              </article>
+            </div>
+            <div class="model-interface">
+              <h3>Matching dimensions already built into the model</h3>
+              <dl>
+                <div><dt>Insert pilot</dt><dd>Ø4.0 × 6.7 mm deep</dd></div>
+                <div><dt>Lid through-hole</dt><dd>Ø3.2 mm</dd></div>
+                <div><dt>Countersink</dt><dd>90°, 2.0 mm deep, Ø7.2 mm maximum</dd></div>
+              </dl>
+            </div>
+            <p class="hardware-warning"><strong>Do not buy by thread name alone.</strong> M3 heat-set inserts differ between manufacturers. Check that the insert data sheet explicitly calls for a 4.0 mm pilot and that its length does not exceed the 6.7 mm pocket.</p>
+          </section>
+
+          <section class="guide-section" id="installation">
+            <div class="guide-section-heading">
+              <span class="guide-section-icon"><i data-lucide="hammer" aria-hidden="true"></i></span>
+              <div>
+                <p class="eyebrow">Final assembly</p>
+                <h2>Install the insert cleanly</h2>
+              </div>
+            </div>
+            <ol class="installation-list">
+              <li>Remove loose strings from the printed Ø4.0 mm pocket. Do not enlarge it unless a test insert proves that your printer made it undersized.</li>
+              <li>Fit an M3 heat-set tip to a temperature-controlled soldering iron. Follow the insert maker's instructions; a common starting point is the filament printing temperature plus 10–20 °C.</li>
+              <li>Place the insert on the pocket at the top of the screw boss and press it vertically with light, steady pressure. Do not force or twist it.</li>
+              <li>Stop when the insert is flush with the boss surface. Keep the tool still briefly, withdraw it vertically and let the plastic cool completely.</li>
+              <li>Slide the lid closed, insert the M3 × 8 mm countersunk screw and tighten it by hand only until the lid is retained.</li>
+            </ol>
+          </section>
+
+          <section class="guide-section guide-sources" aria-labelledby="sources-title">
+            <div>
+              <p class="eyebrow">References</p>
+              <h2 id="sources-title">Technical sources</h2>
+            </div>
+            <ul>
+              <li><a href="https://help.prusa3d.com/article/layers-and-perimeters_1748" target="_blank" rel="noreferrer">Prusa: Layers and perimeters <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://help.prusa3d.com/article/petg_2059" target="_blank" rel="noreferrer">Prusa: PETG material guidance <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.prusa3d.com/product/threaded-inserts/" target="_blank" rel="noreferrer">Prusa / CNC Kitchen: M3 heat-set inserts <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.bossard.com/global-en/eshop/screws-and-bolts-with-internal-drive/hex-socket-flat-countersunk-head-screws-fully-threaded/p/2101/" target="_blank" rel="noreferrer">Bossard: ISO 10642 / DIN 7991 countersunk screws <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+            </ul>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/src/info.ts"></script>
+  </body>
+</html>

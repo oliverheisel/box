@@ -1,5 +1,6 @@
 import {
   AlertCircle,
+  BookOpen,
   Box,
   CheckCircle2,
   ChevronDown,
@@ -154,6 +155,7 @@ app.innerHTML = `
           </div>
         </div>
         <div class="header-actions">
+          <a class="button button-outline" id="print-guide" href="./info.html"><i data-lucide="book-open" aria-hidden="true"></i><span>Print guide</span></a>
           <button class="button button-outline" id="reset-camera" type="button"><i data-lucide="rotate-ccw" aria-hidden="true"></i><span>Reset view</span></button>
           <div class="lid-position-control">
             <div class="lid-position-heading">
@@ -223,6 +225,7 @@ function dimensionSlider(key: InnerSpaceKey, label: string): string {
 
 const ICONS = {
   AlertCircle,
+  BookOpen,
   Box,
   CheckCircle2,
   ChevronDown,
