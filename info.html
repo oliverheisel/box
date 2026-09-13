@@ -85,6 +85,10 @@
                 <h3>Ready for real workflows</h3>
                 <p>Use STL files directly in a slicer, or use native STEP solids when you want to add openings, mounts or other CAD features.</p>
               </article>
+              <article>
+                <h3>Support-free by design</h3>
+                <p>Critical transitions and lid-guide details use printable slopes instead of unsupported horizontal overhangs, so both parts print without support material in their intended orientations.</p>
+              </article>
             </div>
           </section>
 
@@ -103,6 +107,7 @@
               <li><i data-lucide="check" aria-hidden="true"></i><span>Retaining edge, guided shoulder, end stop and screw lock</span></li>
               <li><i data-lucide="check" aria-hidden="true"></i><span>Optional 0.20 mm Heisel logo engraving on the inner floor</span></li>
               <li><i data-lucide="check" aria-hidden="true"></i><span>Geometry validation for separate, closed BOX and LID solids</span></li>
+              <li><i data-lucide="check" aria-hidden="true"></i><span>Support-free geometry with print-friendly slopes at critical transitions</span></li>
               <li><i data-lucide="check" aria-hidden="true"></i><span>Individual BOX/LID STL and STEP downloads plus a complete STEP set</span></li>
             </ul>
           </section>
@@ -130,11 +135,11 @@
               </li>
               <li>
                 <span>4</span>
-                <div><h3>Download both STL files</h3><p>Use <strong>BOX STL</strong> and <strong>LID STL</strong> for printing. STEP is intended for CAD editing and archiving, not the normal slicer workflow.</p></div>
+                <div><h3>Download both STL files</h3><p>Download <strong>BOX STL</strong> and <strong>LID STL</strong> separately. The assembled complete STEP set is intended for CAD editing and archiving, not as a print layout.</p></div>
               </li>
               <li>
                 <span>5</span>
-                <div><h3>Slice at 100% scale</h3><p>Import both files as separate objects, keep millimetres as the unit, apply the starting settings below and inspect every layer before exporting G-code.</p></div>
+                <div><h3>Place both parts separately</h3><p>Import BOX and LID as two separate objects at 100% scale. Place each one individually on the build plate—side by side if space permits, never stacked, intersecting or assembled.</p></div>
               </li>
               <li>
                 <span>6</span>
@@ -165,11 +170,19 @@
                   <tr><td>Perimeters / walls</td><td>4</td><td>Functional strength depends more on perimeters than high infill.</td></tr>
                   <tr><td>Top / bottom</td><td>1.0 mm minimum</td><td>Use at least 7 layers at 0.16 mm or 9 layers at 0.12 mm.</td></tr>
                   <tr><td>Infill</td><td>15–20% gyroid or grid</td><td>The design is mostly shell geometry; extra infill adds little benefit.</td></tr>
-                  <tr><td>Supports</td><td>Off</td><td>The box and lid are designed to print in the orientations below without support material.</td></tr>
+                  <tr><td>Supports</td><td><strong>Off</strong></td><td>Critical guide and shoulder transitions are sloped for support-free printing in the intended orientations below.</td></tr>
                   <tr><td>First layer</td><td>0.20 mm</td><td>A stable first layer without excessive elephant foot.</td></tr>
                   <tr><td>Brim</td><td>Off normally</td><td>Add a 5–8 mm brim only for very tall boxes or materials prone to warping.</td></tr>
                 </tbody>
               </table>
+            </div>
+
+            <div class="separate-print-note">
+              <i data-lucide="box" aria-hidden="true"></i>
+              <div>
+                <h3>Print BOX and LID as two separate parts</h3>
+                <p>Place each part individually on the build plate in the orientation shown below. They may print side by side, but they must not be printed assembled, stacked or intersecting.</p>
+              </div>
             </div>
 
             <div class="orientation-grid">
