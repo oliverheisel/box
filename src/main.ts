@@ -171,7 +171,7 @@ app.innerHTML = `
         <div id="viewer" class="viewer"></div>
         <div class="viewer-loading" id="viewer-loading" aria-hidden="true">
           <div class="loading-cube"><i data-lucide="box" aria-hidden="true"></i></div>
-          <p>Generating solid geometry …</p>
+          <p id="viewer-loading-message">Loading CAD engine...</p>
         </div>
         <div class="viewer-error" id="viewer-error" hidden>
           <i data-lucide="alert-circle" aria-hidden="true"></i>
@@ -254,6 +254,7 @@ let generating = false;
 
 const status = requiredElement("model-status");
 const loadingOverlay = requiredElement("viewer-loading");
+const loadingMessage = requiredElement("viewer-loading-message");
 const errorOverlay = requiredElement("viewer-error");
 const errorMessage = requiredElement("viewer-error-message");
 const lidPositionSlider = requiredElement("lid-position") as HTMLInputElement;
@@ -293,8 +294,13 @@ async function generate(): Promise<void> {
   setBusy(true);
   errorOverlay.hidden = true;
   setStatus("loading", "Generating solid geometry");
+  loadingMessage.textContent = "Starting CAD engine...";
   try {
-    const result = await cad.generate(parameters);
+    const result = await cad.generate(parameters, (message) => {
+      if (sequence !== generationSequence) return;
+      loadingMessage.textContent = `${message}...`;
+      setStatus("loading", message);
+    });
     if (sequence !== generationSequence) return;
     viewer.update(result, parameters);
     updateMetrics(result.metrics.innerDimensions);

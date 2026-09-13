@@ -29,8 +29,19 @@ export type SerializedShape = {
   edges: ShapeEdgeMesh;
 };
 
-export function createModel(parameters: ModelParameters): CadModel {
-  return { box: createBox(parameters), lid: createLid(parameters) };
+export function createModel(
+  parameters: ModelParameters,
+  onProgress?: (message: string) => void,
+): CadModel {
+  onProgress?.("Building BOX geometry");
+  const box = createBox(parameters);
+  try {
+    onProgress?.("Building LID geometry");
+    return { box, lid: createLid(parameters) };
+  } catch (error) {
+    box.delete();
+    throw error;
+  }
 }
 
 function isValidSolid(shape: Shape3D): boolean {

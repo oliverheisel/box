@@ -6,6 +6,9 @@ import type { ModelParameters } from "../model/parameters";
 type PendingRequest = {
   resolve: (value: unknown) => void;
   reject: (reason: Error) => void;
+  onProgress?: (message: string) => void;
+  timer?: ReturnType<typeof setTimeout>;
+  timeoutMs: number;
 };
 
 type WorkerRequestPayload =
@@ -18,28 +21,76 @@ type WorkerRequestPayload =
     };
 
 export class CadClient {
-  private readonly worker = new CadWorker();
+  private worker: Worker;
   private readonly pending = new Map<number, PendingRequest>();
   private nextId = 1;
 
   constructor() {
-    this.worker.addEventListener("message", (event: MessageEvent<WorkerResponse>) => {
-      const response = event.data;
-      const pending = this.pending.get(response.id);
-      if (!pending) return;
-      this.pending.delete(response.id);
-      if (response.type === "error") pending.reject(new Error(response.message));
-      else pending.resolve(response.payload);
-    });
-    this.worker.addEventListener("error", (event: ErrorEvent) => {
-      const error = new Error(event.message || "The CAD worker stopped unexpectedly.");
-      this.pending.forEach(({ reject }) => reject(error));
-      this.pending.clear();
-    });
+    this.worker = this.createWorker();
   }
 
-  generate(parameters: ModelParameters): Promise<GeneratedPayload> {
-    return this.request<GeneratedPayload>({ type: "generate", parameters });
+  private createWorker(): Worker {
+    const worker = new CadWorker();
+    worker.addEventListener("message", this.handleMessage);
+    worker.addEventListener("error", this.handleWorkerError);
+    worker.addEventListener("messageerror", this.handleMessageError);
+    return worker;
+  }
+
+  private readonly handleMessage = (event: MessageEvent<WorkerResponse>): void => {
+    const response = event.data;
+    const pending = this.pending.get(response.id);
+    if (!pending) return;
+    if (response.type === "progress") {
+      pending.onProgress?.(response.message);
+      this.armTimeout(response.id, pending);
+      return;
+    }
+    if (pending.timer !== undefined) clearTimeout(pending.timer);
+    this.pending.delete(response.id);
+    if (response.type === "error") pending.reject(new Error(response.message));
+    else pending.resolve(response.payload);
+  };
+
+  private readonly handleWorkerError = (event: ErrorEvent): void => {
+    event.preventDefault();
+    this.restartWorker(new Error(event.message || "The CAD worker stopped unexpectedly."));
+  };
+
+  private readonly handleMessageError = (): void => {
+    this.restartWorker(new Error("The CAD worker returned an unreadable response."));
+  };
+
+  private restartWorker(error: Error): void {
+    this.worker.terminate();
+    this.pending.forEach(({ reject, timer }) => {
+      if (timer !== undefined) clearTimeout(timer);
+      reject(error);
+    });
+    this.pending.clear();
+    this.worker = this.createWorker();
+  }
+
+  private armTimeout(id: number, pending: PendingRequest): void {
+    if (pending.timer !== undefined) clearTimeout(pending.timer);
+    pending.timer = setTimeout(() => {
+      if (!this.pending.has(id)) return;
+      const timeoutSeconds = Math.round(pending.timeoutMs / 1000);
+      this.restartWorker(new Error(
+        `The CAD engine did not respond within ${timeoutSeconds} seconds. Check the connection and try again.`,
+      ));
+    }, pending.timeoutMs);
+  }
+
+  generate(
+    parameters: ModelParameters,
+    onProgress?: (message: string) => void,
+  ): Promise<GeneratedPayload> {
+    return this.request<GeneratedPayload>(
+      { type: "generate", parameters },
+      45_000,
+      onProgress,
+    );
   }
 
   export(
@@ -47,17 +98,31 @@ export class CadClient {
     part: ExportPart,
     format: ExportFormat,
   ): Promise<{ buffer: ArrayBuffer; mimeType: string }> {
-    return this.request({ type: "export", parameters, part, format });
+    return this.request({ type: "export", parameters, part, format }, 90_000);
   }
 
-  private request<T>(request: WorkerRequestPayload): Promise<T> {
+  private request<T>(
+    request: WorkerRequestPayload,
+    timeoutMs: number,
+    onProgress?: (message: string) => void,
+  ): Promise<T> {
     const id = this.nextId++;
     return new Promise<T>((resolve, reject) => {
-      this.pending.set(id, {
+      const pending: PendingRequest = {
         resolve: (value) => resolve(value as T),
         reject,
-      });
-      this.worker.postMessage({ ...request, id } as WorkerRequest);
+        onProgress,
+        timeoutMs,
+      };
+      this.pending.set(id, pending);
+      this.armTimeout(id, pending);
+      try {
+        this.worker.postMessage({ ...request, id } as WorkerRequest);
+      } catch (error) {
+        if (pending.timer !== undefined) clearTimeout(pending.timer);
+        this.pending.delete(id);
+        reject(error instanceof Error ? error : new Error("The CAD request could not be started."));
+      }
     });
   }
 }

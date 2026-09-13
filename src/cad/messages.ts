@@ -19,6 +19,7 @@ export type GeneratedPayload = {
 };
 
 export type WorkerResponse =
+  | { id: number; type: "progress"; message: string }
   | { id: number; type: "generated"; payload: GeneratedPayload }
   | {
       id: number;
