@@ -323,6 +323,102 @@
   background: var(--secondary);
 }
 
+.transparent-lid-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+  align-items: stretch;
+  gap: 20px;
+}
+
+.transparent-intro {
+  max-width: 68ch;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.transparent-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 18px 0 0;
+}
+
+.transparent-settings div {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--secondary);
+}
+
+.transparent-settings dt { color: var(--muted); font-size: 12px; }
+.transparent-settings dd { margin: 3px 0 0; font-size: 13px; font-weight: 600; }
+
+.transparent-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.transparent-note svg { width: 17px; height: 17px; flex: 0 0 auto; margin-top: 1px; color: var(--primary); }
+
+.infill-example {
+  display: grid;
+  grid-template-rows: minmax(240px, 1fr) auto;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--secondary);
+}
+
+.infill-window {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+  margin: 16px;
+  overflow: hidden;
+  border: 5px solid color-mix(in srgb, var(--foreground), transparent 24%);
+  border-radius: 12px;
+  background-color: color-mix(in srgb, var(--card), transparent 22%);
+  background-image:
+    repeating-linear-gradient(45deg, color-mix(in srgb, var(--foreground), transparent 70%) 0 2px, transparent 2px 14px),
+    repeating-linear-gradient(-45deg, color-mix(in srgb, var(--foreground), transparent 70%) 0 2px, transparent 2px 14px);
+  box-shadow: inset 0 0 32px color-mix(in srgb, var(--card), transparent 18%);
+}
+
+.infill-window::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--card), transparent 65%);
+}
+
+.infill-window span {
+  position: relative;
+  z-index: 1;
+  padding: 5px 8px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--card), transparent 12%);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.infill-example figcaption {
+  display: grid;
+  gap: 3px;
+  padding: 0 16px 16px;
+}
+
+.infill-example figcaption strong { font-family: var(--font-heading); font-size: 14px; }
+.infill-example figcaption span { color: var(--muted); font-size: 12px; }
+
 .hardware-summary { grid-template-columns: 1fr 1fr; }
 .hardware-summary .group-label { margin-bottom: 7px; color: var(--primary); }
 .hardware-summary p:last-child { margin-top: 9px; }
@@ -407,6 +503,7 @@
   .guide-section { padding: 32px 20px; }
   .guide-section-heading h2, .guide-sources h2 { font-size: 21px; }
   .benefit-grid, .orientation-grid, .hardware-summary, .model-interface dl { grid-template-columns: 1fr; }
+  .transparent-lid-layout, .transparent-settings { grid-template-columns: 1fr; }
   .feature-list { grid-template-columns: 1fr; }
   .guide-sources { display: grid; }
 }

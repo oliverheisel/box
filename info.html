@@ -41,6 +41,7 @@
             <a href="#features">What it does</a>
             <a href="#workflow">Generator to printer</a>
             <a href="#print-settings">Print settings</a>
+            <a href="#transparent-lid">Transparent lid</a>
             <a href="#hardware">Insert and screw</a>
             <a href="#installation">Assembly</a>
           </nav>
@@ -190,6 +191,39 @@
             </div>
           </section>
 
+          <section class="guide-section" id="transparent-lid">
+            <div class="guide-section-heading">
+              <span class="guide-section-icon"><i data-lucide="grid-3x3" aria-hidden="true"></i></span>
+              <div>
+                <p class="eyebrow">Design idea</p>
+                <h2>Transparent lid with visible infill</h2>
+              </div>
+            </div>
+            <div class="transparent-lid-layout">
+              <div>
+                <p class="transparent-intro">A clear or translucent lid turns the internal structure into part of the design. The finished surface stays closed, while light reveals the selected infill pattern underneath.</p>
+                <dl class="transparent-settings">
+                  <div><dt>Filament</dt><dd>Clear or translucent PETG</dd></div>
+                  <div><dt>Layer height</dt><dd>0.12–0.16 mm</dd></div>
+                  <div><dt>Top / bottom</dt><dd>2 layers each on the LID only</dd></div>
+                  <div><dt>Infill</dt><dd>20–30% grid, triangles or honeycomb</dd></div>
+                  <div><dt>Top pattern</dt><dd>Monotonic lines</dd></div>
+                  <div><dt>Scale / supports</dt><dd>100% / off</dd></div>
+                </dl>
+                <div class="transparent-note">
+                  <i data-lucide="info" aria-hidden="true"></i>
+                  <p>Apply these values as object-specific settings to the separately imported <strong>LID STL</strong>. Keep the standard 1.0 mm top/bottom recommendation for the BOX. Preview the sliced layers before printing—the exact visibility depends on filament tint, moisture, extrusion calibration and the number of solid skins.</p>
+                </div>
+              </div>
+              <figure class="infill-example">
+                <div class="infill-window" aria-hidden="true">
+                  <span>VISIBLE GRID</span>
+                </div>
+                <figcaption><strong>Finished-print effect</strong><span>The pattern remains visible through the translucent outer skins.</span></figcaption>
+              </figure>
+            </div>
+          </section>
+
           <section class="guide-section" id="hardware">
             <div class="guide-section-heading">
               <span class="guide-section-icon"><i data-lucide="wrench" aria-hidden="true"></i></span>
@@ -246,6 +280,8 @@
             <ul>
               <li><a href="https://help.prusa3d.com/article/layers-and-perimeters_1748" target="_blank" rel="noreferrer">Prusa: Layers and perimeters <i data-lucide="external-link" aria-hidden="true"></i></a></li>
               <li><a href="https://help.prusa3d.com/article/petg_2059" target="_blank" rel="noreferrer">Prusa: PETG material guidance <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://help.prusa3d.com/article/per-model-settings_1674" target="_blank" rel="noreferrer">Prusa: Per-object slicer settings <i data-lucide="external-link" aria-hidden="true"></i></a></li>
+              <li><a href="https://help.prusa3d.com/article/infill-patterns_177130" target="_blank" rel="noreferrer">Prusa: Infill and top-fill patterns <i data-lucide="external-link" aria-hidden="true"></i></a></li>
               <li><a href="https://www.prusa3d.com/product/threaded-inserts/" target="_blank" rel="noreferrer">Prusa / CNC Kitchen: M3 heat-set inserts <i data-lucide="external-link" aria-hidden="true"></i></a></li>
               <li><a href="https://www.bossard.com/global-en/eshop/screws-and-bolts-with-internal-drive/hex-socket-flat-countersunk-head-screws-fully-threaded/p/2101/" target="_blank" rel="noreferrer">Bossard: ISO 10642 / DIN 7991 countersunk screws <i data-lucide="external-link" aria-hidden="true"></i></a></li>
             </ul>
