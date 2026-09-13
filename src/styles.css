@@ -314,7 +314,7 @@ a { color: inherit; }
   font-size: 12px;
   font-weight: 500;
 }
-#reset-camera, #print-guide {
+#reset-camera, #print-guide, #github-link {
   width: 128px;
   min-height: 34px;
   border-radius: var(--radius-control);
@@ -329,7 +329,7 @@ a { color: inherit; }
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#reset-camera, #print-guide { background: var(--card); }
+#reset-camera, #print-guide, #github-link { background: var(--card); }
 .status-badge.is-ready, .solid-indicator { color: var(--foreground); }
 .status-badge.is-ready svg { color: var(--success); }
 .status-badge.is-error, .solid-indicator.is-invalid { color: var(--danger); }
@@ -420,7 +420,7 @@ a { color: inherit; }
   .workspace-header { align-items: flex-start; flex-direction: column; padding: 16px; }
   .workspace-header h2 { font-size: 24px; }
   .header-actions { width: 100%; align-items: stretch; flex-direction: column; }
-  #reset-camera, #print-guide { width: 100%; }
+  #reset-camera, #print-guide, #github-link { width: 100%; }
   .lid-position-control { width: 100%; }
   .viewer-hint { right: 12px; text-align: center; }
   .part-legend { top: 12px; bottom: auto; }

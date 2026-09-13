@@ -5,6 +5,7 @@ import {
   CheckCircle2,
   ChevronDown,
   Download,
+  GitFork,
   RotateCcw,
   Sun,
   createIcons,
@@ -156,6 +157,7 @@ app.innerHTML = `
         </div>
         <div class="header-actions">
           <a class="button button-outline" id="print-guide" href="./info.html"><i data-lucide="book-open" aria-hidden="true"></i><span>Print guide</span></a>
+          <a class="button button-outline" id="github-link" href="https://github.com/oliverheisel/box" target="_blank" rel="noreferrer"><i data-lucide="git-fork" aria-hidden="true"></i><span>GitHub</span></a>
           <button class="button button-outline" id="reset-camera" type="button"><i data-lucide="rotate-ccw" aria-hidden="true"></i><span>Reset view</span></button>
           <div class="lid-position-control">
             <div class="lid-position-heading">
@@ -230,6 +232,7 @@ const ICONS = {
   CheckCircle2,
   ChevronDown,
   Download,
+  GitFork,
   RotateCcw,
   Sun,
 };
